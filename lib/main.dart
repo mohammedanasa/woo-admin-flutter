@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:foodflow/auth/screen_splash.dart';
+import 'package:foodflow/screens/screen-main.dart';
+import 'package:foodflow/screens/screen-products.dart';
 
-void main() => runApp(MyApp());
+const SAVE_KEY_NAME = 'UserLoggedIn';
+
+main() async {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,35 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
         ),
-      ),
-    );
+        home: ScreenSplash(),
+        routes: {
+          '/main-screen': (BuildContext context) => ScreenMain(),
+          //'/product-list': (BuildContext context) => ProductListPage(),
+          //'/order-list': (BuildContext context) => OrderListPage(),
+          //'/product-list1': (BuildContext context) => ProductListPage1(),
+        });
   }
 }
